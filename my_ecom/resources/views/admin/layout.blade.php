@@ -57,6 +57,11 @@
                             <i class="fas fa-sitemap"></i>Size</a>
 
                         </li>
+                        <li class="@yield('color_select')">
+                            <a href="{{url('admin/color')}}">
+                            <i class="fas fa-brush"></i>Color</a>
+
+                        </li>
 
                     </ul>
                 </div>
@@ -92,6 +97,11 @@
                         <li class="@yield('size_select')">
                             <a href="{{url('admin/size')}}">
                             <i class="fas fa-sitemap"></i>Size</a>
+
+                        </li>
+                        <li class="@yield('color_select')">
+                            <a href="{{url('admin/color')}}">
+                            <i class="fas fa-eye-dropper"></i>Color</a>
 
                         </li>
                     </ul>

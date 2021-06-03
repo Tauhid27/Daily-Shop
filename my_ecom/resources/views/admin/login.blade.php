@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Login</title>
@@ -22,8 +22,8 @@
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
-                            
-                        {{Config::get('constants.site_name')}}
+
+                            {{Config::get('constants.site_name')}}
                         </div>
                         <div class="login-form">
                             <form action="{{route('admin.auth')}}" method="post">
@@ -36,13 +36,19 @@
                                     <label>Password</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password" required>
                                 </div>
-                          
+
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
-                             <div class="alert alert-danger">
-                             {{session('error')}}
-                             </div>
+
+                                @if(session()->has('error'))
+                                <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                    {{session('error')}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                @endif
                             </form>
-                       
+
                         </div>
                     </div>
                 </div>
@@ -51,14 +57,14 @@
 
     </div>
 
-   
+
     <script src="{{asset('admin_assets/vendor/jquery-3.2.1.min.js')}}"></script>
-  
+
     <script src="{{asset('admin_assets/vendor/bootstrap-4.1/popper.min.js')}}"></script>
     <script src="{{asset('admin_assets/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
 
     <script src="{{asset('admin_assets/vendor/wow/wow.min.js')}}"></script>
-   
+
     <script src="{{asset('admin_assets/js/main.js')}}"></script>
 
 </body>

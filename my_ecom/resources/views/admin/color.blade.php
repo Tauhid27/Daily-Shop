@@ -1,6 +1,6 @@
 @extends('admin/layout')
-@section('title','Category')
-@section('category_select','active')
+@section('title','Color')
+@section('color_select','active')
 @section('container')
 @if(session()->has('message'))
 <div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
@@ -10,8 +10,8 @@
     </button>
 </div>
 @endif
-<h1>Category</h1>
-<a href="{{url('admin/category/manage_category')}}"><button class="btn btn-success my-3">Add Category</button></a>
+<h1>Size</h1>
+<a href="{{url('admin/color/manage_color')}}"><button class="btn btn-success my-3">Add Color</button></a>
 <div class="row m-t-30">
     <div class="col-md-12">
         <!-- DATA TABLE-->
@@ -20,8 +20,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Category Name</th>
-                        <th>Category Slug</th>
+                        <th>Color</th>
                         <th>Action</th>
 
                     </tr>
@@ -30,17 +29,17 @@
                     @foreach($data as $list)
                     <tr>
                         <td>{{$list->id}}</td>
-                        <td>{{$list->category_name}}</td>
-                        <td>{{$list->category_slug}}</td>
+                        <td>{{$list->color}}</td>
+
                         <td>
 
-                            <a href="{{url('admin/category/manage_category/')}}/{{$list->id}}"><button class="btn btn-success">Update</button></a>
+                            <a href="{{url('admin/color/manage_color/')}}/{{$list->id}}"><button class="btn btn-success">Update</button></a>
                             @if($list->status==1)
-                            <a href="{{url('admin/category/status/0')}}/{{$list->id}}"><button class="btn btn-primary">Active</button></a>
+                            <a href="{{url('admin/color/status/0')}}/{{$list->id}}"><button class="btn btn-primary">Active</button></a>
                             @elseif($list->status==0)
-                            <a href="{{url('admin/category/status/1')}}/{{$list->id}}"><button class="btn btn-warning">Deactive</button></a>
+                            <a href="{{url('admin/color/status/1')}}/{{$list->id}}"><button class="btn btn-warning">Deactive</button></a>
                             @endif
-                            <a href="{{url('admin/category/delete/')}}/{{$list->id}}"><button class="btn btn-danger">Delete</button></a>
+                            <a href="{{url('admin/color/delete/')}}/{{$list->id}}"><button class="btn btn-danger">Delete</button></a>
                         </td>
 
                     </tr>

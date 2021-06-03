@@ -2,7 +2,14 @@
 @section('title','Coupun')
 @section('coupon_select','active')
 @section('container')
-{{session('message')}}
+@if(session()->has('message'))
+<div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
+   {{session('message')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+@endif
 <h1 class="my-3">Coupon</h1>
 <a href="{{url('admin/coupon/manage_coupon')}}"><button class="btn btn-success">Add Coupon</button></a>
 <div class="row m-t-30">
