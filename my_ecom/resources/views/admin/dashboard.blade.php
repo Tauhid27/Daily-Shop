@@ -1,5 +1,6 @@
 @extends('admin/layout')
-
+@section('title','Dashboard')
+@section('dashboard_select','active')
 @section('container')
 
 <div class="row">
