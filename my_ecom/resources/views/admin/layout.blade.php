@@ -57,6 +57,11 @@
                             <i class="fas fa-sitemap"></i>Size</a>
 
                         </li>
+                        <li class="@yield('brand_select')">
+                            <a href="{{url('admin/brand')}}">
+                            <i class="fab fa-product-hunt"></i>Brand</a>
+
+                        </li>
                         <li class="@yield('color_select')">
                             <a href="{{url('admin/color')}}">
                             <i class="fas fa-brush"></i>Color</a>
@@ -104,6 +109,11 @@
                             <i class="fas fa-sitemap"></i>Size</a>
 
                         </li>
+                        <li class="@yield('brand_select')">
+                            <a href="{{url('admin/brand')}}">
+                            <i class="fab fa-product-hunt"></i>Brand</a>
+
+                        </li>
                         <li class="@yield('color_select')">
                             <a href="{{url('admin/color')}}">
                             <i class="fas fa-eye-dropper"></i>Color</a>
@@ -114,6 +124,7 @@
                             <i class="fab fa-product-hunt"></i>Product</a>
 
                         </li>
+                     
                     </ul>
                 </nav>
             </div>

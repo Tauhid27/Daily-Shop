@@ -85,6 +85,7 @@ class ProductController extends Controller
         $result['category'] = DB::table('categories')->where('status', 1)->get();
         $result['colors'] = DB::table('colors')->where('status', 1)->get();
         $result['sizes'] = DB::table('sizes')->where('status', 1)->get();
+        $result['brands'] = DB::table('brands')->where('status', 1)->get();
 
         return view('admin/manage_product', $result);
     }
@@ -167,9 +168,9 @@ class ProductController extends Controller
          
             $productAttrArr['products_id'] = $pid;
             $productAttrArr['sku'] = $skuArr[$key];
-            $productAttrArr['mrp'] = $mrpArr[$key];
-            $productAttrArr['price'] = $priceArr[$key];
-            $productAttrArr['qty'] = $qtyArr[$key];
+            $productAttrArr['mrp'] =(int) $mrpArr[$key];
+            $productAttrArr['price'] =(int) $priceArr[$key];
+            $productAttrArr['qty'] =(int) $qtyArr[$key];
             if ($size_idArr[$key] == '') {
                 $productAttrArr['size_id'] = 0;
             } else {
@@ -211,12 +212,13 @@ class ProductController extends Controller
             $image_name = $rand . '.' . $ext;
             $request->file("images.$key")->storeAs('/public/media', $image_name);
             $productIamgerArr['images'] =$image_name;
+            if($piiArr[$key]!=''){
+                DB::table('product_images')->where(['id'=>$piiArr[$key]])->update($productIamgerArr);  
+            }else{
+                DB::table('product_images')->insert($productIamgerArr); 
+            }
         }
-        if($piiArr[$key]!=''){
-            DB::table('product_images')->where(['id'=>$piiArr[$key]])->update($productIamgerArr);  
-        }else{
-            DB::table('product_images')->insert($productIamgerArr); 
-        }
+       
 
       }
          /* PRODUCT IMAGES  END*/

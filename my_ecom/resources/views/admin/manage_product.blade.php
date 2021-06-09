@@ -11,14 +11,7 @@
 
 <h1>Manage Product</h1>
 
-@if(session()->has('sku_error'))
-<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-    {{session('sku_error')}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">×</span>
-    </button>
-</div>
-@endif
+
 @error('attr_image.*')
 <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
     {{ $message }}
@@ -97,8 +90,19 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="brand" class="control-label mb-1"> Brand</label>
-                                        <input id="brand" value="{{$brand}}" name="brand" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                        <label for="brand" class="control-label mb-1">Brand</label>
+                                        <select id="brand" name="brand" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                            <option value="">Select Brand</option>
+                                            @foreach($brands as $list)
+                                            @if($brand==$list->id)
+                                            <option selected value="{{$list->id}}">
+                                                @else
+                                            <option value="{{$list->id}}">
+
+                                                @endif
+                                                {{$list->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="model" class="control-label mb-1"> Model</label>
