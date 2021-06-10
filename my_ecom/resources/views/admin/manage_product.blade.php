@@ -29,7 +29,7 @@
 </div>
 @enderror
 <a href="{{url('admin/product')}}"><button class="btn btn-success my-3">Back</button></a>
-
+<script src="{{url('ckeditor/ckeditor.js')}}"></script>
 <div class="row m-t-10">
     <div class="col-md-12">
         <form action="{{route('product.manage_product_process')}}" method="post" enctype='multipart/form-data'>
@@ -135,7 +135,82 @@
                                 <label for="warranty" class="control-label mb-1">Warranty</label>
                                 <textarea id="warranty" name="warranty" type="text" class="form-control" aria-required="true" aria-invalid="false" required>{{$warranty}}</textarea>
                             </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <label for="lead_time" class="control-label mb-1">Lead Time</label>
+                                        <input id="lead_time" value="{{$lead_time}}" name="lead_time" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="tax_id" class="control-label mb-1">Tax</label>
+                                        <select id="tax_id" name="tax_id" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                            <option value="">Select Tax</option>
+                                            @foreach($taxes as $list)
+                                            @if($tax_id==$list->id)
+                                            <option selected value="{{$list->id}}">
+                                                @else
+                                            <option value="{{$list->id}}">
 
+                                                @endif
+                                                {{$list->tax_desc}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="is_promo" class="control-label mb-1">Is Promo</label>
+                                        <select id="is_promo" name="is_promo" type="text" class="form-control" required>
+                                            @if($is_promo=='1')
+                                            <option value="1" selected>Yes</option>
+                                            <option value="0">No</option>
+                                            @else
+                                            <option value="1">Yes</option>
+                                            <option value="0" selected>No</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="is_featured" class="control-label mb-1">Is Featured</label>
+                                        <select id="is_featured" name="is_featured" type="text" class="form-control" required>
+                                            @if($is_featured=='1')
+                                            <option value="1" selected>Yes</option>
+                                            <option value="0">No</option>
+                                            @else
+                                            <option value="1">Yes</option>
+                                            <option value="0" selected>No</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="is_discounted" class="control-label mb-1">Is Discounted</label>
+                                        <select id="is_discounted" name="is_discounted" type="text" class="form-control" required>
+                                            @if($is_discounted=='1')
+                                            <option value="1" selected>Yes</option>
+                                            <option value="0">No</option>
+                                            @else
+                                            <option value="1">Yes</option>
+                                            <option value="0" selected>No</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="is_tranding" class="control-label mb-1">Is Tranding</label>
+                                        <select id="is_tranding" name="is_tranding" type="text" class="form-control" required>
+                                            @if($is_tranding=='1')
+                                            <option value="1" selected>Yes</option>
+                                            <option value="0">No</option>
+                                            @else
+                                            <option value="1">Yes</option>
+                                            <option value="0" selected>No</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
 
                         </div>
@@ -185,7 +260,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                 </div>
 
 
@@ -266,7 +341,7 @@
                                         <button type="button" class="btn btn-success btn-lg" onclick="add_more()"><i class="fa fa-plus"></i>&nbsp; Add Attributes</button>
                                         @else
                                         <a href="{{url('admin/product/product_attr_delete/')}}/{{$pAArr['id']}}/{{$id}}">
-                                            <button type="button" class="btn btn-danger btn-lg" ><i class="fa fa-minus"></i>&nbsp; Remove</button>
+                                            <button type="button" class="btn btn-danger btn-lg"><i class="fa fa-minus"></i>&nbsp; Remove</button>
                                         </a>
 
                                         @endif
@@ -325,12 +400,16 @@
 
     function add_image_more() {
         loop_image_count++;
-        var html ='<input id="piid" name="piid[]" type="hidden"><div class="col-md-4 product_images_' + loop_image_count + '"><label for="images" class="control-label mb-1">Image</label> <input id="images" name="images[]" type="file" class="form-control" aria-required="true" aria-invalid="false" ></div>';
+        var html = '<input id="piid" name="piid[]" type="hidden"><div class="col-md-4 product_images_' + loop_image_count + '"><label for="images" class="control-label mb-1">Image</label> <input id="images" name="images[]" type="file" class="form-control" aria-required="true" aria-invalid="false" ></div>';
         html += '<div class="col-md-2 product_images_' + loop_image_count + '"><label for="attr_image" class="control-label mb-1">&nbsp;&nbsp;&nbsp;</label><button type="button" class="btn btn-danger btn-lg" onclick=remove_image_more("' + loop_image_count + '")><i class="fa fa-minus"></i>&nbsp; Remove</button></div>';
         jQuery('#product_images_box').append(html);
     }
-    function remove_image_more(loop_image_count){
-        jQuery('.product_images_'+loop_image_count).remove();
+
+    function remove_image_more(loop_image_count) {
+        jQuery('.product_images_' + loop_image_count).remove();
     }
+    CKEDITOR.replace('short_desc');
+    CKEDITOR.replace('desc');
+    CKEDITOR.replace('technical_specification');
 </script>
 @endsection
