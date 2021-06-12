@@ -77,9 +77,9 @@
                             <i class="fas fa-percent"></i>Tax</a>
 
                         </li>
-                        <li class="@yield('user_select')">
-                            <a href="{{url('admin/user')}}">
-                            <i class="fa fa-user"></i>User</a>
+                        <li class="@yield('customer_select')">
+                            <a href="{{url('admin/customer')}}">
+                            <i class="fa fa-user"></i>Customer</a>
 
                         </li>
 
@@ -139,9 +139,9 @@
                             <i class="fas fa-percent"></i>Tax</a>
 
                         </li>
-                        <li class="@yield('user_select')">
-                            <a href="{{url('admin/user')}}">
-                            <i class="fa fa-user"></i>User</a>
+                        <li class="@yield('customer_select')">
+                            <a href="{{url('admin/customer')}}">
+                            <i class="fa fa-user"></i>Customer</a>
 
                         </li>
                     </ul>
