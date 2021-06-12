@@ -69,6 +69,9 @@
                                     {{ $message }}
                                 </div>
                                 @enderror
+                                @if($image!='')
+                                        <a href="{{asset('storage/media/'.$image)}}" target="_blank"> <img style="width: 100px;height:110px" src="{{asset('storage/media/'.$image)}}"></a>
+                                        @endif
                             </div>
 
                             <div class="form-group">
@@ -252,7 +255,7 @@
                                         <a href="{{url('admin/product/product_images_delete/')}}/{{$pIArr['id']}}/{{$id}}">
                                             <button type="button" class="btn btn-danger btn-lg"><i class="fa fa-minus"></i>&nbsp; Remove</button>
                                         </a>
-                                        <!-- onclick="remove_more('{{$loop_count_prev}}')" -->
+                                       
                                         @endif
                                     </div>
                                     @endforeach

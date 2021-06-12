@@ -59,7 +59,7 @@
                         </li>
                         <li class="@yield('brand_select')">
                             <a href="{{url('admin/brand')}}">
-                            <i class="fab fa-product-hunt"></i>Brand</a>
+                            <i class="fa fa-bold"></i>Brand</a>
 
                         </li>
                         <li class="@yield('color_select')">
@@ -74,7 +74,12 @@
                         </li>
                         <li class="@yield('tax_select')">
                             <a href="{{url('admin/tax')}}">
-                            <i class="fab fa-product-hunt"></i>Tax</a>
+                            <i class="fas fa-percent"></i>Tax</a>
+
+                        </li>
+                        <li class="@yield('user_select')">
+                            <a href="{{url('admin/user')}}">
+                            <i class="fa fa-user"></i>User</a>
 
                         </li>
 
@@ -116,7 +121,7 @@
                         </li>
                         <li class="@yield('brand_select')">
                             <a href="{{url('admin/brand')}}">
-                            <i class="fab fa-product-hunt"></i>Brand</a>
+                            <i class="fa fa-bold"></i>Brand</a>
 
                         </li>
                         <li class="@yield('color_select')">
@@ -131,7 +136,12 @@
                         </li>
                         <li class="@yield('tax_select')">
                             <a href="{{url('admin/tax')}}">
-                            <i class="fab fa-product-hunt"></i>Tax</a>
+                            <i class="fas fa-percent"></i>Tax</a>
+
+                        </li>
+                        <li class="@yield('user_select')">
+                            <a href="{{url('admin/user')}}">
+                            <i class="fa fa-user"></i>User</a>
 
                         </li>
                     </ul>
