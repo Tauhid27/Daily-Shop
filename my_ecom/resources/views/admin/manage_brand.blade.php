@@ -45,7 +45,7 @@
                                 @enderror
 
                                 @if($image!='')
-                                <img width="100px" src="{{asset('storage/media/model/'.$image)}}" />
+                                <img width="100px" src="{{asset('storage/media/brand/'.$image)}}" />
                                 @endif
                             </div>
                             <div class="form-group">

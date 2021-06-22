@@ -65,15 +65,15 @@ class BrandController extends Controller
 
             if ($request->post('id') > 0) {
                 $arrImage = DB::table('brands')->where(['id' => $request->post('id')])->get();
-                if (Storage::exists('/public/media/model/' . $arrImage[0]->image)) {
-                    Storage::delete('/public/media/model/' . $arrImage[0]->image);
+                if (Storage::exists('/public/media/brand/' . $arrImage[0]->image)) {
+                    Storage::delete('/public/media/brand/' . $arrImage[0]->image);
                 }
             }
 
             $image = $request->file('image');
             $ext = $image->extension();
             $image_name = time() . '.' . $ext;
-            $image->storeAs('/public/media/model', $image_name);
+            $image->storeAs('/public/media/brand', $image_name);
             $model->image = $image_name;
         }
 

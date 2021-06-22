@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+//Admin Controllers-------
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CouponController;
@@ -11,11 +11,13 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\TaxController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\HomeBannerController;
+
+//FrontController ------
+use App\Http\Controllers\Front\FrontController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//ADMIN CONTROLLERS CODE START
 //admin login details
 Route::get('admin', [AdminController::class, 'index']);
 Route::post('admin/auth', [AdminController::class, 'auth'])->name('admin.auth');
@@ -90,6 +92,13 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('admin/customer/status/{status}/{id}', [CustomerController::class, 'status']);
 
 
+    //admin Banner  details
+    Route::get('admin/home_banner', [HomeBannerController::class, 'index']);
+    Route::get('admin/home_banner/manage_home_banner', [HomeBannerController::class, 'manage_home_banner']);
+    Route::get('admin/home_banner/manage_home_banner/{id}', [HomeBannerController::class, 'manage_home_banner']);
+    Route::post('admin/home_banner/manage_home_banner_process', [HomeBannerController::class, 'manage_home_banner_process'])->name('home_banner.manage_home_banner_process');
+    Route::get('admin/home_banner/delete/{id}', [HomeBannerController::class, 'delete']);
+    Route::get('admin/home_banner/status/{status}/{id}', [HomeBannerController::class, 'status']);
 
     //admin login details
     // Route::get('admin/updatepassword', [AdminController::class, 'updatepassword']);
@@ -100,3 +109,11 @@ Route::group(['middleware' => 'admin_auth'], function () {
         return redirect('admin');
     });
 });
+//ADMIN CONTROLLERS CODE END
+
+
+
+//FRONT CONTROLLERS CODE START
+Route::get('/', [FrontController::class, 'index']);
+
+//FRONT CONTROLLERS CODE END
