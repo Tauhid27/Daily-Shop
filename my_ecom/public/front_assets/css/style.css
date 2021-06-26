@@ -1108,7 +1108,6 @@ img {
   height: 380px;
   text-align: center;
   margin: 0 0 20px 55px;
- 
   position: relative;
   overflow: hidden;
 }
@@ -4184,3 +4183,19 @@ img {
   }
 }
 
+.lead_time{
+  color: red;
+    margin-top: -12px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.aa-color-red{
+  background-color:red;
+}
+.aa-color-blue{
+  background-color:blue;
+}
+.aa-color-yellow{
+  background-color:yellow;
+}
