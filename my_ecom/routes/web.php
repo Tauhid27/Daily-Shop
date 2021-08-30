@@ -100,7 +100,7 @@ Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('admin/home_banner/delete/{id}', [HomeBannerController::class, 'delete']);
     Route::get('admin/home_banner/status/{status}/{id}', [HomeBannerController::class, 'status']);
 
-    //admin login details
+    //admin logout details
     // Route::get('admin/updatepassword', [AdminController::class, 'updatepassword']);
     Route::get('admin/logout', function () {
         session()->forget('ADMIN_LOGIN');
@@ -115,5 +115,6 @@ Route::group(['middleware' => 'admin_auth'], function () {
 
 //FRONT CONTROLLERS CODE START
 Route::get('/', [FrontController::class, 'index']);
+Route::get('product/{id}', [FrontController::class, 'product']);
 
 //FRONT CONTROLLERS CODE END

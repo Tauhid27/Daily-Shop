@@ -1,4 +1,5 @@
 @extends('front/layout')
+@section('title','Home Page')
 @section('container')
 
 <!-- Start slider -->
@@ -11,7 +12,7 @@
                     @foreach($home_banner as $list)
                     <li>
                         <div class="seq-model">
-                        <img src="{{asset('storage/media/banner/'.$list->image)}} " alt="img">
+                            <img src="{{asset('storage/media/banner/'.$list->image)}} " alt="img">
                         </div>
                         @if($list->btn_txt!='')
                         <div class="seq-title">
@@ -19,7 +20,7 @@
                         </div>
                         @endif
                     </li>
-                
+
                     @endforeach
 
                 </ul>
